@@ -1,0 +1,11 @@
+.line
+{
+  width: 1px;
+  background-color: black;
+  position: absolute;
+}
+
+body
+{
+  overflow: hidden;
+}
