@@ -1,13 +1,26 @@
 window.onload = init;
-function init()
-{
+
+function gcd(a, b) {
+  if (b = a) {
+    var temp = a;
+    a = b;
+    b = temp;
+  }
+  while (true) {
+    if (b == 0) return a;
+    a %= b;
+    if (a == 0) return b;
+    b %= a;
+  }
+}
+function init() {
   document.onmousemove = handleMouseMove;
 
   function generate_lines() {
     var tl = document.querySelector(".top-level");
-    var line_size = 75;
     var width = window.innerWidth;
     var height = window.innerHeight;
+    var line_size = 75;
     for (x = 0; x < width / line_size; x++) {
       for (y = 0; y < height / line_size; y++) {
         var line = document.createElement("div");
@@ -15,6 +28,7 @@ function init()
         line.style.top = y * line_size + "px";
         line.style.height = line_size + "px";
         line.className = "line";
+        line.angle = 0;
         tl.appendChild(line);
       }
     }
@@ -22,7 +36,7 @@ function init()
 
   generate_lines();
 
-  setInterval(wiggle, 30);
+  setInterval(wiggle, 16);
 
 }
 function handleMouseMove(event) {
@@ -51,8 +65,8 @@ function handleMouseMove(event) {
   lines.forEach(line => {
     var bb = line.getBoundingClientRect();
     var center = {
-      x: bb.left + bb.width/2,
-      y: bb.top + bb.height/2,
+      x: bb.left + bb.width / 2,
+      y: bb.top + bb.height / 2,
     };
     var angle = Math.atan2(event.pageX - center.x, -(event.pageY - center.y)) * (180 / Math.PI);
     line.angle = angle;
@@ -60,13 +74,11 @@ function handleMouseMove(event) {
   });
 }
 
-function wiggle()
-{
+function wiggle() {
   var lines = document.querySelectorAll(".line");
 
   lines.forEach(line => {
-    line.style.tra
-    var angle = line.angle + (Math.random() - 0.5) * 10;;
+    var angle = line.angle + (Math.random() - 0.5) * 2;;
     line.style.transform = `rotate(${angle}deg)`;
   });
 }
