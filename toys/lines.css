@@ -1,0 +1,12 @@
+.line
+{
+  width: 1px;
+  background-color: black;
+  position: absolute;
+  border-radius: 5px;
+}
+
+body
+{
+  overflow: hidden;
+}

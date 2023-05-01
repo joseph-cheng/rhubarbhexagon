@@ -1,11 +1,7 @@
-.line
+.titles
 {
-  width: 1px;
-  background-color: black;
-  position: absolute;
-}
-
-body
-{
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Chivo Mono', monospace;
 }
